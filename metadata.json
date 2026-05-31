@@ -1,0 +1,6 @@
+{
+  "name": "UK AI Patient Assistant Platform",
+  "description": "A full-stack production sandbox and live evaluation system for multi-clinic AI receptionists, tailored for dental, GP, and private clinics in the UK.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
