@@ -332,7 +332,48 @@ The **Architecture Hub** tab documents the recommended path from this sandbox to
 | `npm run lint` | Type-check with TypeScript (`tsc --noEmit`) |
 | `npm run clean` | Remove `dist/` and build artifacts |
 
-### Production deployment
+### Deploy on Render
+
+This app is a **single Node.js Web Service** (Express serves both the API and the built React frontend).
+
+#### Option A — One-click Blueprint (recommended)
+
+1. Push the latest code to GitHub (includes `render.yaml`).
+2. Go to [Render Dashboard](https://dashboard.render.com/) → **New** → **Blueprint**.
+3. Connect your GitHub account and select **[AI-Chatbot-Patient-Assistant](https://github.com/mkkbun/AI-Chatbot-Patient-Assistant)**.
+4. Render will read `render.yaml` and create the web service automatically.
+5. When prompted, set **`GEMINI_API_KEY`** to your [Google AI Studio](https://aistudio.google.com/apikey) key.
+6. Click **Apply** and wait for the build to finish (usually 2–5 minutes).
+
+#### Option B — Manual Web Service setup
+
+1. Go to [Render Dashboard](https://dashboard.render.com/) → **New** → **Web Service**.
+2. Connect GitHub and select your repository.
+3. Use these settings:
+
+| Setting | Value |
+|---------|-------|
+| **Name** | `ai-chatbot-patient-assistant` |
+| **Runtime** | `Node` |
+| **Build Command** | `npm install && npm run build` |
+| **Start Command** | `npm start` |
+| **Plan** | Free (or paid for always-on) |
+
+4. Under **Environment Variables**, add:
+
+| Key | Value |
+|-----|-------|
+| `NODE_ENV` | `production` |
+| `GEMINI_API_KEY` | Your Gemini API key |
+| `APP_URL` | Your Render URL (e.g. `https://ai-chatbot-patient-assistant.onrender.com`) |
+
+5. Click **Create Web Service**.
+
+> **Free tier note:** Render free web services spin down after ~15 minutes of inactivity. The first visit after idle may take 30–60 seconds to wake up.
+
+Your live URL will look like: `https://ai-chatbot-patient-assistant.onrender.com`
+
+### Local production test
 
 ```bash
 npm run build
