@@ -32,7 +32,7 @@ Built with [Google AI Studio](https://ai.studio) and extensible toward a microse
 1. **Clone and install**
 
    ```bash
-   git clone https://github.com/mkkbun/ai-assistant.git
+   git clone https://github.com/mkkbun/AI-Chatbot-Patient-Assistant.git
    cd ai-assistant
    npm install
    ```
